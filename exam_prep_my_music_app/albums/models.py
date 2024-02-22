@@ -49,12 +49,14 @@ class Album(models.Model):
         unique=True,
         null=False,
         blank=False,
+        verbose_name="Album Name",
     )
 
     artist_name = models.CharField(
         max_length=MAX_ARTIST_NAME_LENGTH,
         null=False,
         blank=False,
+        verbose_name="Artist",
     )
 
     genre = models.CharField(
@@ -79,6 +81,7 @@ class Album(models.Model):
     image_url = models.URLField(
         null=False,
         blank=False,
+        verbose_name="Image URL",
     )
 
     owner = models.ForeignKey(

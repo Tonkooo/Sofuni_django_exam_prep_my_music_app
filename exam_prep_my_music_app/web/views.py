@@ -2,6 +2,7 @@ from django import forms
 # from django.views import generic as views
 from django.shortcuts import render, redirect
 
+from exam_prep_my_music_app.albums.models import Album
 from exam_prep_my_music_app.profiles.models import Profile
 from exam_prep_my_music_app.web.Forms import CreateProfileForm
 
@@ -27,7 +28,11 @@ def index(request):
     if profile is None:
         return create_profile(request)
 
-    return render(request, 'web/home-with-profile.html')
+    context = {
+        "albums": Album.objects.all()
+    }
+
+    return render(request, 'web/home-with-profile.html', context)
 
 # class IndexView(views.Templateview):
 #     def get_template_names(self):
